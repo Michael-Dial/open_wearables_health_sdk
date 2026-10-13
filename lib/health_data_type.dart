@@ -24,6 +24,10 @@ enum HealthDataType {
   heartRateVariabilityRMSSD, // iOS 27+
   walkingHeartRateAverage,
   heartRateRecoveryOneMinute, // iOS 16+
+  /// Apple Watch beat-to-beat series (iOS only). Authorized with the other types, but
+  /// which series get uploaded is decided per participant on the backend
+  /// (off / sleep / all day, plus requested windows).
+  heartbeatSeries,
   vo2Max,
   oxygenSaturation,
   bloodOxygen, // alias of oxygenSaturation on iOS
@@ -129,6 +133,8 @@ extension HealthDataTypeId on HealthDataType {
         return 'walkingHeartRateAverage';
       case HealthDataType.heartRateRecoveryOneMinute:
         return 'heartRateRecoveryOneMinute';
+      case HealthDataType.heartbeatSeries:
+        return 'heartbeatSeries';
       case HealthDataType.vo2Max:
         return 'vo2Max';
       case HealthDataType.oxygenSaturation:

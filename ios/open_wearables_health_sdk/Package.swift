@@ -11,11 +11,11 @@ let package = Package(
     ],
     dependencies: [
         .package(name: "FlutterFramework", path: "../FlutterFramework"),
-        // dial203 fork: HRV RMSSD and readiness input types. Pinned to a commit so
+        // dial203 fork: HRV RMSSD, readiness input types and beat-to-beat capture. Pinned to a commit so
         // every build maps to one SDK revision.
         .package(
             url: "https://github.com/dial203/dial203-open_wearables_ios_sdk.git",
-            revision: "bc6817ccdd4b56231b18600ad5af03d5b4c03cce"
+            revision: "f41a35a38d297a98692df28ee47ef845049aa921"
         ),
     ],
     targets: [
