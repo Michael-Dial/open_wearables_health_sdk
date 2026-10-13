@@ -1,6 +1,6 @@
 ## Unreleased
 
-* **Beat-to-beat capture (iOS, dial203 fork)**: `HealthDataType.heartbeatSeries` authorizes Apple Watch heartbeat series. Which series are uploaded is decided per participant on the backend (`off`, `sleep`, `all_day`, plus requested windows); the native SDK reads those instructions after each sync. Each beat arrives as the interval in ms since the previous beat at the beat's own time, in the backend's `pulse_to_pulse_interval` series. The SPM iOS SDK pin moves to `f41a35a` of `dial203/dial203-open_wearables_ios_sdk`. Ignored on Android and under CocoaPods (upstream SDK).
+* **Beat-to-beat capture (iOS, dial203 fork)**: `HealthDataType.heartbeatSeries` authorizes Apple Watch heartbeat series. Which series are uploaded is decided per participant on the backend (`off`, `sleep`, `all_day`, plus requested windows); the native SDK reads those instructions after each sync. Each beat arrives as the interval in ms since the previous beat at the beat's own time, in the backend's `pulse_to_pulse_interval` series. The SPM iOS SDK pin and the example app's Podfile pin move to `f41a35a` of `dial203/dial203-open_wearables_ios_sdk`. Ignored on Android, and under CocoaPods unless the app's Podfile points `OpenWearablesHealthSDK` at the fork (the podspec alone resolves upstream `~> 0.15.0`).
 * iOS Swift Package Manager support (#52). CocoaPods still works. The native iOS SDK stays on `~> 0.15.0`.
 
 ## 0.0.25

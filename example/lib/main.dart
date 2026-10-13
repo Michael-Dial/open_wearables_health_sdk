@@ -287,6 +287,12 @@ class _HomePageState extends State<HomePage> {
         await OpenWearablesHealthSdk.configure(host: credentials['host'] as String);
         _checkStatus();
         _setStatus('Session restored');
+        // Participants already syncing never see Authorize Health again, so a build
+        // that adds a type (heartbeat series) has to ask here. HealthKit shows the
+        // sheet only for types not yet decided; otherwise this returns silently.
+        if (Platform.isIOS && OpenWearablesHealthSdk.isSignedIn) {
+          await OpenWearablesHealthSdk.requestAuthorization(types: HealthDataType.values);
+        }
       }
 
       if (Platform.isAndroid) {
