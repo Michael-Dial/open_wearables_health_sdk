@@ -12,6 +12,10 @@ import open_wearables_health_sdk
     // register later, once the scene creates the Flutter engine, so create the
     // SDK here.
     _ = OpenWearablesHealthSDK.shared
+    // A background launch (HealthKit delivering new samples, a BGTask) connects
+    // no scene, so the engine and Dart's configure never run. HealthKit delivers
+    // only to observer queries this process has running, so register them here.
+    OpenWearablesHealthSDK.shared.restoreBackgroundSyncAtLaunch()
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
 
