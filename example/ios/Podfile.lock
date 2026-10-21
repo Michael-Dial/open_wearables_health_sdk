@@ -20,7 +20,7 @@ DEPENDENCIES:
   - Flutter (from `Flutter`)
   - integration_test (from `.symlinks/plugins/integration_test/ios`)
   - open_wearables_health_sdk (from `.symlinks/plugins/open_wearables_health_sdk/ios`)
-  - OpenWearablesHealthSDK (from `https://github.com/dial203/dial203-open_wearables_ios_sdk.git`, commit `cd4a4dadf4ca920f93a507395cfa94cb4a48cc55`)
+  - OpenWearablesHealthSDK (from `https://github.com/dial203/dial203-open_wearables_ios_sdk.git`, commit `9df024f6f9a758a0f642c10e1bef632a4542ccc5`)
   - package_info_plus (from `.symlinks/plugins/package_info_plus/ios`)
   - sentry_flutter (from `.symlinks/plugins/sentry_flutter/ios`)
   - wakelock_plus (from `.symlinks/plugins/wakelock_plus/ios`)
@@ -37,7 +37,7 @@ EXTERNAL SOURCES:
   open_wearables_health_sdk:
     :path: ".symlinks/plugins/open_wearables_health_sdk/ios"
   OpenWearablesHealthSDK:
-    :commit: cd4a4dadf4ca920f93a507395cfa94cb4a48cc55
+    :commit: 9df024f6f9a758a0f642c10e1bef632a4542ccc5
     :git: https://github.com/dial203/dial203-open_wearables_ios_sdk.git
   package_info_plus:
     :path: ".symlinks/plugins/package_info_plus/ios"
@@ -48,7 +48,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   OpenWearablesHealthSDK:
-    :commit: cd4a4dadf4ca920f93a507395cfa94cb4a48cc55
+    :commit: 9df024f6f9a758a0f642c10e1bef632a4542ccc5
     :git: https://github.com/dial203/dial203-open_wearables_ios_sdk.git
 
 SPEC CHECKSUMS:
@@ -61,6 +61,6 @@ SPEC CHECKSUMS:
   sentry_flutter: 31101687061fb85211ebab09ce6eb8db4e9ba74f
   wakelock_plus: e29112ab3ef0b318e58cfa5c32326458be66b556
 
-PODFILE CHECKSUM: 0c3f129adfd489ccd8658429eac728bb955cf004
+PODFILE CHECKSUM: 21f50500f6d6f8476a10245a7b3f39b0861899e5
 
 COCOAPODS: 1.17.0
