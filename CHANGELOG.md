@@ -1,6 +1,13 @@
 ## Unreleased
 
-* iOS Swift Package Manager support (#52). CocoaPods still works. The native iOS SDK stays on `~> 0.15.0`.
+## 0.0.26
+
+* Bumped native iOS SDK dependency from `~> 0.15.0` to `~> 0.16.0` (CocoaPods and SPM).
+  - **Heart rate recovery**: `HealthDataType.heartRateRecoveryOneMinute` (iOS 16+), the one-minute post-workout HR drop Apple Watch writes after a recorded workout.
+  - **HRV RMSSD**: `HealthDataType.heartRateVariabilityRMSSD` (iOS 27+, built with Xcode 27). Skipped on older iOS versions and older Xcode builds.
+  - **All HealthKit dietary types** (#58): `HealthDataType` now includes all 39 dietary quantity types (fiber, sugar, fats, cholesterol, sodium, vitamins, minerals, caffeine…). Requesting any dietary type also reads HealthKit food entries, so nutrients are grouped by meal. Requires Open Wearables 0.10.0 or later.
+  - New types are iOS-only and are ignored on Android.
+* iOS Swift Package Manager support (#52). CocoaPods still works.
 
 ## 0.0.25
 
