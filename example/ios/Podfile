@@ -34,8 +34,8 @@ target 'Runner' do
   # Pinned to a commit so every build maps to one SDK revision. Keep it in step
   # with the SPM pin in ios/open_wearables_health_sdk/Package.swift.
   pod 'OpenWearablesHealthSDK',
-      :git => 'https://github.com/dial203/dial203-open_wearables_ios_sdk.git',
-      :commit => 'f7b80134075235cb3ebd5ce3f0144eb85f93381b'
+      :git => 'https://github.com/Michael-Dial/open_wearables_ios_sdk.git',
+      :commit => 'd8cf10016ba32c1d2ba84238e298e5dee18089ab'
 
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
 
