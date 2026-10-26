@@ -9,7 +9,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # is the build number for local builds only. dial203/app-store-release replaces it
 # with the UTC date-time (e.g. 20261013.154108), so a local upload of a version it
 # has shipped needs a higher build number than that.
-version: 1.0.2+3
+version: 1.0.3+3
 
 environment:
   sdk: ^3.9.2
