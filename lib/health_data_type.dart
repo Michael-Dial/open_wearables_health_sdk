@@ -20,6 +20,8 @@ enum HealthDataType {
   heartRate,
   restingHeartRate,
   heartRateVariabilitySDNN,
+  heartRateVariabilityRMSSD, // iOS 27+
+  heartRateRecoveryOneMinute, // iOS 16+
   vo2Max,
   oxygenSaturation,
   bloodOxygen, // alias of oxygenSaturation on iOS
@@ -45,8 +47,42 @@ enum HealthDataType {
   // Nutrition
   dietaryEnergyConsumed,
   dietaryCarbohydrates,
+  dietaryFiber,
+  dietarySugar,
   dietaryProtein,
   dietaryFatTotal,
+  dietaryFatSaturated,
+  dietaryFatMonounsaturated,
+  dietaryFatPolyunsaturated,
+  dietaryCholesterol,
+  dietarySodium,
+  dietaryPotassium,
+  dietaryChloride,
+  dietaryCaffeine,
+  dietaryCalcium,
+  dietaryIron,
+  dietaryMagnesium,
+  dietaryPhosphorus,
+  dietaryVitaminA,
+  dietaryVitaminB6,
+  dietaryVitaminB12,
+  dietaryVitaminC,
+  dietaryVitaminD,
+  dietaryVitaminE,
+  dietaryVitaminK,
+  dietaryThiamin,
+  dietaryRiboflavin,
+  dietaryNiacin,
+  dietaryFolate,
+  dietaryBiotin,
+  dietaryPantothenicAcid,
+  dietaryZinc,
+  dietaryCopper,
+  dietaryManganese,
+  dietarySelenium,
+  dietaryChromium,
+  dietaryMolybdenum,
+  dietaryIodine,
   dietaryWater,
 
   // Sleep / mindfulness
@@ -114,6 +150,10 @@ extension HealthDataTypeId on HealthDataType {
         return 'restingHeartRate';
       case HealthDataType.heartRateVariabilitySDNN:
         return 'heartRateVariabilitySDNN';
+      case HealthDataType.heartRateVariabilityRMSSD:
+        return 'heartRateVariabilityRMSSD';
+      case HealthDataType.heartRateRecoveryOneMinute:
+        return 'heartRateRecoveryOneMinute';
       case HealthDataType.vo2Max:
         return 'vo2Max';
       case HealthDataType.oxygenSaturation:
@@ -160,10 +200,78 @@ extension HealthDataTypeId on HealthDataType {
         return 'dietaryEnergyConsumed';
       case HealthDataType.dietaryCarbohydrates:
         return 'dietaryCarbohydrates';
+      case HealthDataType.dietaryFiber:
+        return 'dietaryFiber';
+      case HealthDataType.dietarySugar:
+        return 'dietarySugar';
       case HealthDataType.dietaryProtein:
         return 'dietaryProtein';
       case HealthDataType.dietaryFatTotal:
         return 'dietaryFatTotal';
+      case HealthDataType.dietaryFatSaturated:
+        return 'dietaryFatSaturated';
+      case HealthDataType.dietaryFatMonounsaturated:
+        return 'dietaryFatMonounsaturated';
+      case HealthDataType.dietaryFatPolyunsaturated:
+        return 'dietaryFatPolyunsaturated';
+      case HealthDataType.dietaryCholesterol:
+        return 'dietaryCholesterol';
+      case HealthDataType.dietarySodium:
+        return 'dietarySodium';
+      case HealthDataType.dietaryPotassium:
+        return 'dietaryPotassium';
+      case HealthDataType.dietaryChloride:
+        return 'dietaryChloride';
+      case HealthDataType.dietaryCaffeine:
+        return 'dietaryCaffeine';
+      case HealthDataType.dietaryCalcium:
+        return 'dietaryCalcium';
+      case HealthDataType.dietaryIron:
+        return 'dietaryIron';
+      case HealthDataType.dietaryMagnesium:
+        return 'dietaryMagnesium';
+      case HealthDataType.dietaryPhosphorus:
+        return 'dietaryPhosphorus';
+      case HealthDataType.dietaryVitaminA:
+        return 'dietaryVitaminA';
+      case HealthDataType.dietaryVitaminB6:
+        return 'dietaryVitaminB6';
+      case HealthDataType.dietaryVitaminB12:
+        return 'dietaryVitaminB12';
+      case HealthDataType.dietaryVitaminC:
+        return 'dietaryVitaminC';
+      case HealthDataType.dietaryVitaminD:
+        return 'dietaryVitaminD';
+      case HealthDataType.dietaryVitaminE:
+        return 'dietaryVitaminE';
+      case HealthDataType.dietaryVitaminK:
+        return 'dietaryVitaminK';
+      case HealthDataType.dietaryThiamin:
+        return 'dietaryThiamin';
+      case HealthDataType.dietaryRiboflavin:
+        return 'dietaryRiboflavin';
+      case HealthDataType.dietaryNiacin:
+        return 'dietaryNiacin';
+      case HealthDataType.dietaryFolate:
+        return 'dietaryFolate';
+      case HealthDataType.dietaryBiotin:
+        return 'dietaryBiotin';
+      case HealthDataType.dietaryPantothenicAcid:
+        return 'dietaryPantothenicAcid';
+      case HealthDataType.dietaryZinc:
+        return 'dietaryZinc';
+      case HealthDataType.dietaryCopper:
+        return 'dietaryCopper';
+      case HealthDataType.dietaryManganese:
+        return 'dietaryManganese';
+      case HealthDataType.dietarySelenium:
+        return 'dietarySelenium';
+      case HealthDataType.dietaryChromium:
+        return 'dietaryChromium';
+      case HealthDataType.dietaryMolybdenum:
+        return 'dietaryMolybdenum';
+      case HealthDataType.dietaryIodine:
+        return 'dietaryIodine';
       case HealthDataType.dietaryWater:
         return 'dietaryWater';
 

@@ -13,7 +13,7 @@ let package = Package(
         .package(name: "FlutterFramework", path: "../FlutterFramework"),
         .package(
             url: "https://github.com/the-momentum/open_wearables_ios_sdk.git",
-            "0.15.0"..<"0.16.0"
+            "0.16.0"..<"0.17.0"
         ),
     ],
     targets: [
