@@ -35,7 +35,7 @@ target 'Runner' do
   # with the SPM pin in ios/open_wearables_health_sdk/Package.swift.
   pod 'OpenWearablesHealthSDK',
       :git => 'https://github.com/Michael-Dial/open_wearables_ios_sdk.git',
-      :commit => 'd8cf10016ba32c1d2ba84238e298e5dee18089ab'
+      :commit => '317780388e05aae51808cbe07725d1203d472434'
 
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
 
