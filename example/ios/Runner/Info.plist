@@ -37,6 +37,8 @@
 	<string>This app syncs your health data to your account.</string>
 	<key>NSHealthUpdateUsageDescription</key>
 	<string>This app needs to update your health data.</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
