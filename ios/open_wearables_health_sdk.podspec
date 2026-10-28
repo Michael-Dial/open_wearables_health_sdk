@@ -14,7 +14,7 @@ Uses the native OpenWearablesHealthSDK under the hood.
   s.source_files = 'open_wearables_health_sdk/Sources/**/*.swift'
 
   s.dependency 'Flutter'
-  s.dependency 'OpenWearablesHealthSDK', '~> 0.16.0'
+  s.dependency 'OpenWearablesHealthSDK', '~> 0.17.0'
 
   s.platform = :ios, '15.0'
   s.swift_version = '5.0'
