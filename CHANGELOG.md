@@ -1,6 +1,6 @@
 ## Unreleased
 
-* **OWSync 1.4.0: overnight data without opening the app, and pool-swim lap fields.** The iOS SDK pin (Podfile, `Podfile.lock` and `Package.swift`) moves to `0021b54` (Michael-Dial/open_wearables_ios_sdk#14).
+* **OWSync 1.4.0: overnight data without opening the app, and pool-swim lap fields.** The iOS SDK pin (Podfile, `Podfile.lock` and `Package.swift`) moves to `0b819c3` (Michael-Dial/open_wearables_ios_sdk#14).
   - Port of upstream #81 (closed upstream without merging): a HealthKit read refused because the phone is locked now leaves a persisted flag and re-submits both background tasks, so sleep and early-morning workouts written overnight reach the backend from a background task or the next foreground instead of waiting for the user to open OWSync. Background tasks skip the read while locked and complete when their sync ends instead of after a fixed 20s/25s wait.
   - Upstream #79 (open upstream): each workout `laps` entry carries `strokeStyle` and, on iOS 16+, `swolf` as typed values. Older servers ignore the new keys.
   The podspec is unchanged in that range, so `Podfile.lock`'s checksum stays as it was.
