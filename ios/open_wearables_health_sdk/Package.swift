@@ -15,7 +15,7 @@ let package = Package(
         // every build maps to one SDK revision.
         .package(
             url: "https://github.com/Michael-Dial/open_wearables_ios_sdk.git",
-            revision: "45587e05eb1d041bc20e9cea861ab8d0ba102496"
+            revision: "0b819c382a41fda69e5376f70847096ea47e2244"
         ),
     ],
     targets: [

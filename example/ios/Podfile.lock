@@ -20,7 +20,7 @@ DEPENDENCIES:
   - Flutter (from `Flutter`)
   - integration_test (from `.symlinks/plugins/integration_test/ios`)
   - open_wearables_health_sdk (from `.symlinks/plugins/open_wearables_health_sdk/ios`)
-  - OpenWearablesHealthSDK (from `https://github.com/Michael-Dial/open_wearables_ios_sdk.git`, commit `45587e05eb1d041bc20e9cea861ab8d0ba102496`)
+  - OpenWearablesHealthSDK (from `https://github.com/Michael-Dial/open_wearables_ios_sdk.git`, commit `0b819c382a41fda69e5376f70847096ea47e2244`)
   - package_info_plus (from `.symlinks/plugins/package_info_plus/ios`)
   - sentry_flutter (from `.symlinks/plugins/sentry_flutter/ios`)
   - wakelock_plus (from `.symlinks/plugins/wakelock_plus/ios`)
@@ -37,7 +37,7 @@ EXTERNAL SOURCES:
   open_wearables_health_sdk:
     :path: ".symlinks/plugins/open_wearables_health_sdk/ios"
   OpenWearablesHealthSDK:
-    :commit: 45587e05eb1d041bc20e9cea861ab8d0ba102496
+    :commit: 0b819c382a41fda69e5376f70847096ea47e2244
     :git: https://github.com/Michael-Dial/open_wearables_ios_sdk.git
   package_info_plus:
     :path: ".symlinks/plugins/package_info_plus/ios"
@@ -48,7 +48,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   OpenWearablesHealthSDK:
-    :commit: 45587e05eb1d041bc20e9cea861ab8d0ba102496
+    :commit: 0b819c382a41fda69e5376f70847096ea47e2244
     :git: https://github.com/Michael-Dial/open_wearables_ios_sdk.git
 
 SPEC CHECKSUMS:
