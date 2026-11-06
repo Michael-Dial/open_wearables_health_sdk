@@ -523,6 +523,48 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  /// Sends everything Health holds again: stop, forget what was sent, start with no history window
+  /// (`syncDaysBack: 0` is "no limit" on both platforms), so the first run is a full export.
+  /// Open Wearables stores each sample once; what this adds is the per-source device and app
+  /// description it now keeps, for data synced before it existed.
+  Future<void> _resendAllHistory() async {
+    final confirmed = await showCupertinoDialog<bool>(
+      context: context,
+      builder: (ctx) => CupertinoAlertDialog(
+        title: const Text('Send all history again?'),
+        content: const Text(
+          'Every Health record on this phone is uploaded again, however old. Nothing is counted twice. '
+          'It can take hours and runs in the background.',
+        ),
+        actions: [
+          CupertinoDialogAction(onPressed: () => Navigator.of(ctx).pop(false), child: const Text('Cancel')),
+          CupertinoDialogAction(isDefaultAction: true, onPressed: () => Navigator.of(ctx).pop(true), child: const Text('Send all')),
+        ],
+      ),
+    );
+    if (confirmed != true) return;
+    setState(() => _isLoading = true);
+    try {
+      await OpenWearablesHealthSdk.stopBackgroundSync();
+      await OpenWearablesHealthSdk.resetAnchors();
+      final started = await OpenWearablesHealthSdk.startBackgroundSync(syncDaysBack: 0);
+      setState(() {
+        _isSyncing = started;
+        _syncDaysBack = null;
+        _isCustomDays = false;
+      });
+      _setStatus(started ? 'Sending all history again' : 'Could not start sync');
+      if (started) _refreshHistoricalSyncStatus();
+    } on NotSignedInException {
+      _setStatus('Sign in first');
+    } catch (e, stackTrace) {
+      _setStatus('Error: $e');
+      Sentry.captureException(e, stackTrace: stackTrace, hint: Hint.withMap({'operation': 'resendAllHistory'}));
+    } finally {
+      setState(() => _isLoading = false);
+    }
+  }
+
   Future<void> _stopBackgroundSync() async {
     setState(() => _isLoading = true);
     try {
@@ -1079,6 +1121,16 @@ class _HomePageState extends State<HomePage> {
                   : 'Sync ${_syncDaysBack != null ? 'last $_syncDaysBack days' : 'full history'}',
               onTap: _isSyncing ? _stopBackgroundSync : _startBackgroundSync,
             ),
+            if (_isSyncing) ...[
+              _buildDivider(),
+              _buildActionTile(
+                icon: CupertinoIcons.arrow_clockwise,
+                iconColor: OWColors.accent,
+                title: 'Send All History Again',
+                subtitle: 'Re-upload every Health record, however old',
+                onTap: _resendAllHistory,
+              ),
+            ],
           ],
           _buildDivider(),
           _buildActionTile(
