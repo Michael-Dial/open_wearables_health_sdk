@@ -5,6 +5,11 @@ plugins {
     id("dev.flutter.flutter-gradle-plugin")
 }
 
+// Google Play: the "Ship to Google Play" workflow in Michael-Dial/app-store-release puts this app's
+// upload key on the runner and names it in these variables. Without them (a local
+// `flutter run --release`) the release build signs with the debug key, which Play refuses.
+val uploadKeystore: String? = System.getenv("ANDROID_UPLOAD_KEYSTORE")?.takeIf { it.isNotBlank() }
+
 android {
     namespace = "com.openwearables.health.sdk.example"
     compileSdk = flutter.compileSdkVersion
@@ -20,8 +25,9 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.openwearables.health.sdk.example"
+        // OWSync's ID, the same as its iOS bundle ID. The namespace above only names the generated
+        // classes (and MainActivity's package) and need not match.
+        applicationId = "com.dial203.owsync"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = 29
@@ -30,11 +36,20 @@ android {
         versionName = flutter.versionName
     }
 
+    signingConfigs {
+        uploadKeystore?.let { path ->
+            create("upload") {
+                storeFile = file(path)
+                storePassword = System.getenv("ANDROID_UPLOAD_STORE_PASSWORD")
+                keyAlias = System.getenv("ANDROID_UPLOAD_KEY_ALIAS")
+                keyPassword = System.getenv("ANDROID_UPLOAD_KEY_PASSWORD")
+            }
+        }
+    }
+
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig = signingConfigs.getByName("debug")
+            signingConfig = signingConfigs.findByName("upload") ?: signingConfigs.getByName("debug")
             
             // Enable R8/ProGuard
             isMinifyEnabled = true
