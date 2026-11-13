@@ -51,7 +51,8 @@ android {
     }
 
     dependencies {
-        implementation("com.github.the-momentum.open_wearables_android_sdk:sdk:v0.13.1")
+        // The lab's fork by commit: upstream v0.13.1 plus Michael-Dial/open_wearables_android_sdk#1.
+        implementation("com.github.Michael-Dial.open_wearables_android_sdk:sdk:06e8aa3609")
 
         // Testing
         testImplementation("org.jetbrains.kotlin:kotlin-test")
