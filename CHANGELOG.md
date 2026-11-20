@@ -19,6 +19,12 @@
 * **OWSync background sync after the UIScene change (iOS)**: Apple Health data reached the backend only while OWSync was open, or after stopping and restarting sync. Since OWSync adopted the UIScene lifecycle the Flutter engine starts with the scene, which a background launch never connects, so Dart's `configure` never ran when HealthKit woke the app and no observer query was there to receive the delivery. `AppDelegate` now calls the native SDK's `restoreBackgroundSyncAtLaunch()` in `didFinishLaunching`. The SPM iOS SDK pin and the example app's Podfile pin move to `cd4a4da` of `dial203/dial203-open_wearables_ios_sdk`. OWSync 1.0.1.
 * **Beat-to-beat capture (iOS, dial203 fork)**: `HealthDataType.heartbeatSeries` authorizes Apple Watch heartbeat series. Which series are uploaded is decided per participant on the backend (`off`, `sleep`, `all_day`, plus requested windows); the native SDK reads those instructions after each sync. Each beat arrives as the interval in ms since the previous beat at the beat's own time, in the backend's `pulse_to_pulse_interval` series. The SPM iOS SDK pin and the example app's Podfile pin move to `f41a35a` of `dial203/dial203-open_wearables_ios_sdk`. Ignored on Android, and under CocoaPods unless the app's Podfile points `OpenWearablesHealthSDK` at the fork (the podspec alone resolves upstream `~> 0.15.0`).
 
+## 0.0.27
+
+* Bumped native Android SDK from `v0.13.1` to `v0.13.2`.
+  - **Health Connect authorization no longer fails after the data grant**: when the user granted data types, `requestAuthorization` now returns `true` even if the follow-up background/history permission request fails. Before, on Android 14+ devices without the Health Connect app package, the fallback screen could not be opened and the whole call returned `false`. Background and history read are now requested only when Health Connect reports them available.
+  The fork keeps its own pin (`com.github.Michael-Dial.open_wearables_android_sdk:sdk:06e8aa3609`); OWSync is being retired, so it does not move.
+
 ## 0.0.26
 
 * Bumped native iOS SDK dependency from `~> 0.15.0` to `~> 0.16.0` (CocoaPods and SPM).
